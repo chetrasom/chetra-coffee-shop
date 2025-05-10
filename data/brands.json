@@ -1,0 +1,7 @@
+[
+    { "name": "NESCAFÉ Gold", "slug": "nescafe-gold" },
+    { "name": "NESCAFÉ Americano", "slug": "nescafe-americano" },
+    { "name": "NESCAFÉ Blend and Brew", "slug": "nescafe-blend-brew" },
+    { "name": "NESCAFÉ Red Cup", "slug": "nescafe-red-cup" },
+    { "name": "NESCAFÉ Ready to Drink", "slug": "nescafe-ready-to-drink" }
+]  

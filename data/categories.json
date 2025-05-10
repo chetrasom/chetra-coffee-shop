@@ -1,0 +1,6 @@
+[
+    { "name": "Instant Coffee", "slug": "instant-coffee" },
+    { "name": "Sachet Coffee", "slug": "sachet-coffee" },
+    { "name": "Ready to Drink", "slug": "ready-to-drink-coffee" },
+    { "name": "Drinks", "slug": "drinks" }
+]

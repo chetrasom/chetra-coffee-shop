@@ -1,0 +1,132 @@
+datasource db {
+    provider          = "postgresql"
+    url               = env("DATABASE_URL")
+    directUrl         = env("DIRECT_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+// # My Analyzes Coffee Shop
+
+// # 1. Category (was Coffee Format)
+model Category {
+    id        String    @id @default(uuid())
+    name      String    // e.g., "Instant Coffee", "Sachet Coffee", "Ready to Drink"
+    slug      String    @unique
+    products  Product[]
+}
+
+// # 2. Brand (Brand Type)
+model Brand {
+    id        String    @id @default(uuid())
+    name      String    // e.g., "NESCAFÉ® Gold", "NESCAFÉ® Americano"
+    slug      String    @unique
+    products  Product[]
+}
+
+// # 3. CoffeeType (Coffee Type)
+model CoffeeType {
+    id        String    @id @default(uuid())
+    name      String    // e.g., "Latte", "Black Coffee", "Frothy Coffee"
+    slug      String    @unique
+    products  Product[]
+}
+
+// # 4. Product (with relations)
+model Product {
+    id            String     @id @default(uuid())
+    name          String
+    shortDesc     String?
+    longDesc      String?
+    imageUrl      String?
+    price         Decimal
+    stockQuantity Int
+    size          Int[]
+    bestSeller    Boolean
+    clerkId       String
+
+    // New Relations
+    category      Category   @relation(fields: [categoryId], references: [id])
+    categoryId    String
+
+    brand         Brand      @relation(fields: [brandId], references: [id])
+    brandId       String
+    
+    coffeeType    CoffeeType @relation(fields: [coffeeTypeId], references: [id])
+    coffeeTypeId  String
+
+    createdAt     DateTime   @default(now())
+    updatedAt     DateTime   @updatedAt
+
+    favorites Favorite[]
+
+    reviews Review []
+
+    cartItems CartItem[]
+}
+
+// # 5. Favorite
+model Favorite {
+    id        String   @id @default(uuid())
+    clerkId  String
+    product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+    productId String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+// #6. Review
+model Review {
+    id        String   @id @default(uuid())
+    clerkId  String
+    rating Int
+    comment String
+    authorName String
+    authorImageUrl String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+    productId String
+}
+
+// #7. Cart
+model Cart {
+    id        String   @id @default(uuid())
+    clerkId  String
+    cartItems CartItem[]
+    numItemsInCart Int @default(0)
+    cartTotal Int @default(0)
+    shipping Int @default(5)
+    tax Int @default(0)
+    taxRate Float @default(0.1)
+    orderTotal Int @default(0)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model CartItem {
+    id        String   @id @default(uuid())
+    product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+    productId String
+    cart     Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+    cartId   String
+    amount  Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+// #8. Order
+model Order {
+    id        String   @id @default(uuid())
+    clerkId  String
+    products Int  @default(0)
+    orderTotal Int @default(0)
+    tax Int @default(0)
+    shipping Int @default(0)
+    email String
+    isPaid Boolean @default(false)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
