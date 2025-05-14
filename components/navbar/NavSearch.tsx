@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { useState, useEffect } from "react";
 import { createUrl } from "@/lib/createUrl";
+import { FiSearch } from "react-icons/fi";
 
 const NavSearch = () => {
     const searchParams = useSearchParams();
@@ -39,11 +40,14 @@ const NavSearch = () => {
     }, [searchParams]);
 
     return (
-        <div className="max-w-md w-full">
+        <div className="relative max-w-md w-full">
+            <div className="absolute top-1/2 -translate-y-1/2 left-4">
+                <FiSearch className="w-5 h-5 text-primary" />
+            </div>
             <Input 
                 type="search"
-                placeholder="Find your favorite coffee..."
-                className="h-12 bg-background"
+                placeholder="Explore coffee flavors and more..."
+                className="h-12 bg-background pl-11"
                 value={search}
                 onChange={(e) => {
                     setSearch(e.target.value);

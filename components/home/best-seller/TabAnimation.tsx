@@ -1,8 +1,5 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { motion } from "framer-motion";
 import { formatCategory } from "@/lib/formatCategory";
 import { ProductWithRelations } from "@/types";
 import BestSellerProduct from "./BestSellerProduct";
@@ -23,9 +20,9 @@ const TabAnimation = ({ products }: TabAnimationProp) => {
                         asChild
                         key={cat} 
                         value={cat} 
-                        className="capitalize rounded-md border px-4 py-2 text-sm font-medium transition-colors data-[state=active]:bg-primary data-[state=active]:text-white data-[state=inactive]:bg-white data-[state=inactive]:text-black"  
+                        className="capitalize rounded-md border px-4 py-2 text-sm font-medium transition-colors data-[state=active]:bg-secondary data-[state=active]:text-white data-[state=inactive]:bg-white data-[state=inactive]:text-black"  
                     >
-                        <Button className="h-11">
+                        <Button className="font-bold font-open_sans text-primary">
                             {formatCategory(cat)}
                         </Button>
                     </TabsTrigger>
@@ -42,18 +39,29 @@ const TabAnimation = ({ products }: TabAnimationProp) => {
 
                 return (
                     <TabsContent key={cat} value={cat}>
-                        <motion.div
+                        <div
                             key={cat}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, ease: "easeOut" }}
-                            className={`${filtered.length === 1 ? 'grid-cols-1' : 'grid-cols-2'} grid gap-x-2.5 gap-y-5 mt-12 md:grid-cols-3 md:gap-5 lg:grid-cols-3 lg:gap-8`}
+                            className={`grid grid-cols-1 gap-x-2.5 gap-y-6 mt-12 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-8`}
                         >
                             {filtered.slice(0,6).map((product) => {
                                 return <BestSellerProduct key={product.id} product={product} />
                             })}
-                        </motion.div>
+                        </div>
                     </TabsContent>
+
+                    // <TabsContent key={cat} value={cat}>
+                    //     <motion.div
+                    //         key={cat}
+                    //         initial={{ opacity: 0, y: 20 }}
+                    //         animate={{ opacity: 1, y: 0 }}
+                    //         transition={{ duration: 0.4, ease: "easeOut" }}
+                    //         className={`grid grid-cols-1 gap-x-2.5 gap-y-6 mt-12 md:grid-cols-3 md:gap-5 lg:grid-cols-3 lg:gap-8`}
+                    //     >
+                    //         {filtered.slice(0,6).map((product) => {
+                    //             return <BestSellerProduct key={product.id} product={product} />
+                    //         })}
+                    //     </motion.div>
+                    // </TabsContent>
                 );
             })}
         </Tabs>

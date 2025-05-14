@@ -19,7 +19,11 @@ const ResetFilters = () => {
     };
 
     return (
-        <Button variant="destructive" onClick={handleReset}>
+        <Button 
+            variant="destructive" 
+            onClick={handleReset} 
+            className='capitalize font-poppins font-bold rounded-lg text-base'
+        >
             Reset Filters
         </Button>
     )

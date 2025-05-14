@@ -6,8 +6,11 @@ import { Button } from '../ui/button';
 import { PiCoffee, PiCoffeeFill } from "react-icons/pi"
 import { ReloadIcon } from '@radix-ui/react-icons';
 import { cn } from '@/lib/utils';
-import { LuTrash2, LuSquare } from 'react-icons/lu';
+import { LuSquare } from 'react-icons/lu';
 import { BsTrash } from 'react-icons/bs';
+import { FaHeart } from 'react-icons/fa';
+
+import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
 
 // # Submit Button
 type btnSize = 'default' | 'lg' | 'sm';
@@ -32,7 +35,7 @@ export function SubmitButton({
         <Button
             type='submit'
             disabled={pending}
-            className={cn('capitalize', className)}
+            className={cn('capitalize btn h-12', className)}
             size={size}
             variant={variantStyle}
         >
@@ -105,12 +108,11 @@ export const CardSignInButton = () => {
         <SignInButton mode='modal'>
             <Button
                 type='button'
-                size='icon'
-                variant='outline'
-                className="text-amber-700 dark:text-amber-600"
-                asChild
+                size={"icon"}
+                variant={"outline"}
+                className='border border-[#bd7a38] rounded-full bg-background dark:bg-muted'
             >
-                <PiCoffee className="w-5 h-5" />
+                <IoMdHeartEmpty className='text-secondary w-5 h-5' />
             </Button>
         </SignInButton>
     )
@@ -118,20 +120,20 @@ export const CardSignInButton = () => {
 
 export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
     const { pending } = useFormStatus();
-    
+
     return (
         <Button
             type='submit'
             size='icon'
             variant='outline'
-            className="text-amber-700 dark:text-amber-600"
+            className="border border-[#bd7a38] rounded-full bg-background dark:bg-muted"
         >
             {pending ? (
-                <ReloadIcon className=' animate-spin' />
+                <ReloadIcon className='animate-spin' />
             ) : isFavorite ? (
-                <PiCoffeeFill className="w-5 h-5" />
+                <IoIosHeart className="w-5 h-5 text-red-600" />
             ) : (
-                <PiCoffee className="w-5 h-5" />
+                <IoMdHeartEmpty className='w-5 h-5 text-secondary' />
             )}
         </Button>
     )
@@ -141,7 +143,7 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
 export const ProductSignInButton = () => {
     return (
         <SignInButton mode='modal'>
-            <Button type='button' size='default' className='mt-8'>
+            <Button type='button' size='default' className='mt-8 btn'>
                 Please Sign In
             </Button>
         </SignInButton>

@@ -8,7 +8,7 @@ const UserIcon = async () => {
 
     if (profileImage) {
         return (
-            <figure className='relative w-6 h-6 rounded-full overflow-hidden'>
+            <figure className='relative w-8 h-8 rounded-full overflow-hidden'>
                 <Image 
                     src={profileImage}
                     alt='profile-image'
@@ -22,7 +22,7 @@ const UserIcon = async () => {
     }
 
     return (
-        <LuUser className='w-6 h-6 bg-primary rounded-full text-white' />
+        <LuUser className='w-7 h-7 bg-primary rounded-full text-white' />
     )
 }
 export default UserIcon

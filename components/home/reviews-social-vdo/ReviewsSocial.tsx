@@ -18,9 +18,9 @@ const ReviewsSocial = () => {
 
                 <div className="text-center mx-auto max-w-2xl mb-4">
                     <h2 className="h2 mt-2 text-primary mb-2">Social Media Highlights</h2>
-                    <h3 className="h3 max-w-lg mx-auto">
-                        Our customers reviews on how our coffee fuels their day & eases their stress.
-                    </h3>
+                    <p className="text-lg mx-auto max-w-xl text-gray-700 dark:text-gray-300 px-5">
+                        Our customers reviews on how our coffee fuels their day <span className="font-display">&</span> eases their stress.
+                    </p>
                     <div className="max-w-sm mx-auto mt-4">
                         <BorderGradient />
                     </div>
@@ -32,9 +32,9 @@ const ReviewsSocial = () => {
                             return <AiFillStar key={i} className="text-amber-400 w-5 h-5" />
                         })}
                     </div>
-                    <span className="text-[15px]">
+                    <p className="text-[15px] font-open_sans">
                         Happy Customers Reviews
-                    </span>
+                    </p>
                 </div>
 
                 <Swiper

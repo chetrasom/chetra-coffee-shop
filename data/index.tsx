@@ -1,4 +1,5 @@
 import { NavLink } from "@/types";
+import { FaCoffee, FaSeedling, FaLeaf, FaMugHot } from "react-icons/fa";
   
 export const links: NavLink[] = [
     { href: '/', label: 'home' },
@@ -72,30 +73,34 @@ export const aboutReviews = [
 
 export const features = [
     {
-        icon: "/images/icons/6.png",
+        // icon: "/images/icons/6.png",
+        icon: FaCoffee,
         title: "Awesome Aroma",
         description:
         "At ChetraCoffee, every cup begins with a captivating aroma. Our freshly brewed coffee fills the air with an irresistible scent that awakens your senses.",
     },
     {
-        icon: "/images/icons/4.png",
+        // icon: "/images/icons/4.png",
+        icon: FaSeedling,
         title: "Premium Quality",
         description:
         "We believe in excellence. Our coffee is made from carefully selected beans, expertly roasted to deliver a smooth, rich flavor in every sip.",
     },
     {
-        icon: "/images/icons/1.png",
+        // icon: "/images/icons/1.png",
+        icon: FaLeaf,
         title: "Pure Ingredients",
         description:
         "We prioritize purity and freshness. Our beans are sourced from trusted farmers, ensuring that every cup is natural, delicious, and free from additives.",
     },
     {
-        icon: "/images/icons/3.png",
+        // icon: "/images/icons/3.png",
+        icon: FaMugHot,
         title: "Signature Blends",
         description:
         "From classic black coffee to creamy lattes, our signature blends are crafted to suit every taste. Whether you love it strong or smooth, we have the perfect cup for you.",
     },
-  ];
+];
 
 // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 

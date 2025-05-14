@@ -12,19 +12,19 @@ import { links } from '@/data';
 import UserIcon from './UserIcon';
 import { SignInButton, SignUpButton, SignedIn, SignedOut } from '@clerk/nextjs';
 import SignOutLink from './SignOutLink';
+import DarkModeDropdown from './DarkModeDropdown';
 
 const LinksDropdown = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant='outline' className='h-9 flex gap-x-2 px-2 max-w-[100px] lg:gap-x-3'>
-                    <LuAlignLeft className='h-[1.2rem] w-[1.2rem] text-custom-green dark:text-custom-white' />
+                <Button variant={"outline"} className='gap-x-3 h-10 max-w-[120px] w-full px-3 transition lg:max-w-max'>
+                    <LuAlignLeft className='h-[1.3rem] w-[1.3rem] text-primary dark:text-white' />
                     <UserIcon />
                 </Button>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent className='w-40' align='end' sideOffset={10}>
-
+            <DropdownMenuContent className='w-40 z-10' align='start' sideOffset={10}>
                 <SignedOut>
                     <DropdownMenuItem>
                         <SignInButton mode='modal'>
@@ -49,6 +49,7 @@ const LinksDropdown = () => {
                             </DropdownMenuItem>
                         );
                     })}
+                    <DarkModeDropdown />
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem>

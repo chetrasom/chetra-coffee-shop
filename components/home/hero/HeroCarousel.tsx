@@ -22,16 +22,16 @@ const HeroCarousel = () => {
                 {carouselImages.map((image, index) => {
                     return (
                         <CarouselItem key={index}>
-                            <Card>
+                            <Card className='rounded-3xl'>
                                 <CardContent className='p-2'>
-                                    <figure className='relative aspect-[4/4] rounded-xl overflow-hidden'>
+                                    <figure className='relative aspect-[4/4] rounded-3xl overflow-hidden'>
                                         <Image 
                                             src={image}
                                             alt="img"
                                             fill
                                             priority
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-contain"
                                         />
                                     </figure>
                                 </CardContent>

@@ -26,7 +26,7 @@ const BestSeller = async () => {
             <div className="container">
                 <TabAnimation products={bestsellersProducts} />
                 <div className="pt-16 text-center">
-                    <Button asChild>
+                    <Button asChild className="btn">
                         <Link href="/products">View All Products</Link>
                     </Button>
                 </div>

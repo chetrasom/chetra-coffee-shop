@@ -17,8 +17,8 @@ type ReviewCardProps = {
 const ReviewCard = ({ reviewInfo, children }: ReviewCardProps) => {
     const id = reviewInfo.productId;
     return (
-        <div className="relative border rounded-lg p-4 bg-muted">
-            <Link href={`/products/${id}`} className="bg-red-400 space-y-4 md:space-y-5">
+        <div className="relative bg-background border border-[#f5d8b7]/50 shadow-lg rounded-xl p-4 bg-muted">
+            <Link href={`/products/${id}`} className="space-y-4 md:space-y-5">
                 <div className="flex items-center gap-x-2.5">
                     <figure className="relative bg-muted w-16 h-16 rounded-full ring-1 ring-primary/50 overflow-hidden">
                         <Image 

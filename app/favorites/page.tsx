@@ -1,6 +1,5 @@
 import { fetchUserFavorites } from "@/utils/actions"
 import BorderGradient from "@/components/BorderGradient"
-import ProductGrid from "@/components/products/ProductsGrid"
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -13,7 +12,6 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { BsCart4 } from "react-icons/bs"
 import { MdOutlineKeyboardReturn } from "react-icons/md"
-import ProductsGrid from "@/components/products/ProductsGrid"
 import FavoriteProduct from "@/components/favorites/FavoriteProduct"
 
 const FavoritesPage = async () => {
@@ -48,12 +46,13 @@ const FavoritesPage = async () => {
                 </div>
 
                 {favorites.length === 0 ? (
-                    <div className="bg-muted rounded-lg overflow-hidden p-5 flex flex-col items-center justify-center gap-y-5">
-                        <h2 className="h2 leading-loose text-amber-500">
+                    <div className="bg-muted rounded-lg overflow-hidden flex flex-col items-center justify-center gap-y-5 px-5 py-8">
+                        <h2 className="h2 font-poppins font-bold text-center leading-loose text-secondary">
                             You have no favorites yet.
                         </h2>
-                        <BsCart4 className="w-10 h-10 text-amber-500" />
-                        <Button asChild className="h-11">
+
+                        <BsCart4 className="w-10 h-10 text-secondary" />
+                        <Button asChild className="mt-4 btn-default">
                             <Link href="/products" className="flex items-center gap-x-2">
                                 <MdOutlineKeyboardReturn className="w-4 h-4" />Continue shopping
                             </Link>

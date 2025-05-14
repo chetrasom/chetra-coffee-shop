@@ -7,6 +7,7 @@ import { Product } from "@prisma/client";
 import AddToCart from "./AddToCart";
 import ProductRating from "./ProductRating";
 import SelectProductAmount from "./SelectProductAmount";
+import { Button } from "../ui/button";
 
 type SingleProductContainerProp = {
     product: Product,
@@ -18,7 +19,7 @@ const SingleProductContainer = ({ product }: SingleProductContainerProp) => {
 
     return (
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-x-12">
-            <div className="relative rounded-lg border overflow-hidden grid place-items-center">
+            <div className="relative border border-[#f5d8b7]/50 shadow-lg rounded-xl overflow-hidden grid place-items-center py-5 md:shadow-none">
                 {imageUrl && (
                     <figure className="relative rounded-2xl w-full h-[17.5rem] lg:h-[23.75rem]">
                         <Image 
@@ -31,7 +32,7 @@ const SingleProductContainer = ({ product }: SingleProductContainerProp) => {
                         />
                         <div
                             id="shape"
-                            className="absolute left-[50%] bottom-[10%] -translate-x-[50%] -z-10 bg-primary rounded-full w-[250px] h-[250px] lg:w-[350px] lg:h-[350px]"
+                            className="absolute left-[50%] bottom-[10%] -translate-x-[50%] -z-10 bg-secondary rounded-full w-[250px] h-[250px] lg:w-[350px] lg:h-[350px]"
                             style={{ clipPath: "inset(50% 0 0 0)" }}
                         ></div>
                     </figure>
@@ -54,7 +55,7 @@ const SingleProductContainer = ({ product }: SingleProductContainerProp) => {
                     </div>
                 </div>
 
-                <p className='mt-3 text-primary font-bold text-xl bg-muted inline-block p-2 rounded-md'>
+                <p className='mt-3 text-primary font-open_sans font-bold text-xl bg-muted rounded-md inline-block py-2 px-6'>
                     {dollarAmount}
                 </p>
 
@@ -63,8 +64,8 @@ const SingleProductContainer = ({ product }: SingleProductContainerProp) => {
                 </p>
 
                 <div className="mb-5 lg:mb-7">
-                    <p className="font-semibold text-lg">Package size and format</p>
-                    <div className='mt-3 text-xs text-muted-foreground tracking-wider bg-muted inline-block p-2 rounded-md'>
+                    <h3 className="h3 font-semibold text-lg">Package size and format</h3>
+                    <div className='mt-3 text-sm text-muted-foreground tracking-wider bg-muted inline-block py-2 px-4 rounded-md'>
                         {size.length > 0 
                             ? size.map((item, index) => (
                                 <span key={item}>

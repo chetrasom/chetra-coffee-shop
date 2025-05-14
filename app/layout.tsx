@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display, Merienda } from 'next/font/google';
+import { Cormorant_Upright, Open_Sans, Poppins } from 'next/font/google';
 import './globals.css';
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from '@/components/navbar/Navbar';
@@ -10,6 +11,24 @@ const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-displa
 const inter = Inter({ subsets: ['latin'], variable: '--font-body' })
 const merienda = Merienda({ subsets: ['latin'], variable: '--font-merienda' })
 
+const cormorant_upright = Cormorant_Upright({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-cormorant_upright',
+});
+
+const open_sans = Open_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-open_sans',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-poppins',
+});
+
 export const metadata: Metadata = {
   title: "Chetra Coffee Shop | Best Coffee Products Online",
   description: "Discover a wide range of premium coffee products, including instant coffee, sachet coffee, and more. Start your coffee journey with us today!",
@@ -17,14 +36,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { 
-        url: '/favicon.ico',
-        type: 'image/ico',
-        sizes: '32x32',
+        url: '/cafe.ico',
+        type: 'image/x-icon',
       },
       { 
-        url: '/favicon.png',
+        url: '/cafe.png',
         type: 'image/png',
-        sizes: '32x32',
       },
     ],
   },
@@ -37,11 +54,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chetra Coffee Shop | Best Coffee Products Online",
     description: "Discover a wide range of premium coffee products, including instant coffee, sachet coffee, and more. Start your coffee journey with us today!",
-    url: "https://your-coffee-shop-domain.com",
+    url: "https://chetracoffee-shop.vercel.app/",
     siteName: "Chetra Coffee Shop",
     images: [
       {
-        url: "https://your-coffee-shop-domain.com/og-image.jpg",
+        url: "https://ik.imagekit.io/phkgtl3vm/hero/hero2.jpg?updatedAt=1745052385780",
         height: 630,
         alt: "Chetra Coffee Shop - Best Coffee Products Online",
       },
@@ -51,9 +68,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Coffee Shop | Best Coffee Products Online",
+    title: "Chetra Coffee Shop | Best Coffee Products Online",
     description: "Discover premium coffee products and start your coffee journey with us!",
-    images: ["https://your-coffee-shop-domain.com/og-image.jpg"],
+    images: ["https://ik.imagekit.io/phkgtl3vm/hero/hero2.jpg?updatedAt=1745052385780"],
   },
 };
 
@@ -65,7 +82,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang='en' suppressHydrationWarning>
-        <body className={`${playfair.variable} ${inter.variable} ${merienda.variable}`}>
+        <body className={`${playfair.variable} ${inter.variable} ${merienda.variable}
+        ${cormorant_upright.variable} ${open_sans.variable} ${poppins.variable}`}>
           <Providers>
             <Navbar />
             <main>

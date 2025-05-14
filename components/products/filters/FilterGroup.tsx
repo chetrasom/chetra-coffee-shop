@@ -27,7 +27,7 @@ const FilterGroup = ({ title, filters, queryKey }: FilterGroupProps) => {
     return (
         <div className="mb-5">
             <div className="mb-5">
-                <h4 className="text-primary font-bold uppercase">{title}</h4>
+                <h4 className="text-primary font-bold uppercase text-xl">{title}</h4>
                 <div className="w-24 mt-0.5">
                     <BorderGradient />
                 </div>
@@ -39,9 +39,9 @@ const FilterGroup = ({ title, filters, queryKey }: FilterGroupProps) => {
                         <Button
                             key={filter.slug}
                             onClick={() => handleClick(filter.slug)}
-                            variant={filter.slug === currentValue ? 'default' : 'secondary'}
+                            variant={filter.slug === currentValue ? 'default' : 'outline'}
                             color={filter.slug === currentValue ? 'black' : 'gray'}
-                            className="text-sm capitalize transition md:p-2 md:h-10 lg:h-12 lg:p-4"
+                            className="btn-default px-3"
                         >
                             {filter.name}
                         </Button>

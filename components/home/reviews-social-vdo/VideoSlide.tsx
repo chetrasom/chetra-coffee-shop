@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import { FaPlay } from "react-icons/fa";
 
 interface VideoSlideProps {
     item: {
@@ -38,6 +39,7 @@ const VideoSlide = ({ item, index }: VideoSlideProps) => {
                 className="w-full h-full object-cover cursor-pointer"
                 muted
                 loop
+                // poster={"https://ik.imagekit.io/phkgtl3vm/hero/hero1.jpg?updatedAt=1745052385201"}
                 preload="metadata"
                 onClick={handleVideoClick}
             >
@@ -51,8 +53,8 @@ const VideoSlide = ({ item, index }: VideoSlideProps) => {
                     className="absolute inset-0 flex items-center justify-center z-10"
                     onClick={handleVideoClick}
                 >
-                    <button className="bg-black/60 text-white hover:bg-black/80 transition w-12 h-12 rounded-full">
-                        ▶
+                    <button className="bg-black/60 text-white hover:bg-black/80 transition w-20 h-20 rounded-full flex items-center justify-center">
+                        <FaPlay className="w-5 h-5" />
                     </button>
                 </div>
             )}
@@ -70,7 +72,7 @@ const VideoSlide = ({ item, index }: VideoSlideProps) => {
                         />
                     </figure>
                     <div className="flex-1">
-                        <h4>{item.name}</h4>
+                        <h4 className="text-white font-semibold">{item.name}</h4>
                     </div>
                 </div>
             </div>

@@ -11,8 +11,8 @@ type CartTotalsProp = {
 }
 
 const CartTotals = ({ cart }: CartTotalsProp) => {
-    const { cartTotal, shipping, tax, orderTotal } = cart;
-    console.log(shipping)
+    const { cartTotal, tax, orderTotal } = cart;
+    
     return (
         <>
             <div className="border rounded-lg p-4">
@@ -27,7 +27,6 @@ const CartTotals = ({ cart }: CartTotalsProp) => {
                     <li>
                         <div className="text-secondary-foreground text-sm flex justify-between border-b pb-2.5">
                             <label>Shipping</label>
-                            {/* <span>{formatCurrency(shipping)}</span> */}
                             <span>{formatCurrency(0)}</span>
                         </div>
                     </li>
@@ -50,12 +49,15 @@ const CartTotals = ({ cart }: CartTotalsProp) => {
                 <FormContainer action={createOrderAction}>
                     <SubmitButton 
                         text='Proceed to checkout'
-                        variantStyle={'outline'}
-                        className='w-full h-12'
+                        className="btn-default w-full"
                     />
                 </FormContainer>
 
-                <Button variant="default" className="capitalize h-11 w-full" asChild>
+                <Button 
+                    variant="outline" 
+                    className="capitalize w-full btn-default" 
+                    asChild
+                >
                     <Link href="/products">
                         continue shopping
                     </Link>

@@ -11,10 +11,10 @@ const CartButton = async () => {
             asChild
             variant="outline"
             size="icon"
-            className="relative flex items-center justify-center"
+            className="h-10 relative flex items-center justify-center lg:w-10"
         >
-            <Link href="/">
-                <GiShoppingBag className="h-[1.2rem] w-[1.2rem] text-custom-green dark:text-custom-white" />
+            <Link href="/cart">
+                <GiShoppingBag className="h-[1.2rem] w-[1.2rem] text-primary dark:text-custom-white" />
                 <span className='absolute -top-3 -right-3 bg-primary border-t border-[#fafffe] text-white rounded-full h-6 w-6 flex items-center justify-center text-xs'>
                     {numberInCart}
                 </span>

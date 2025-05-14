@@ -28,7 +28,7 @@ const ProductsBanner = () => {
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
-                    <h2 className="h2 leading-loose pt-2.5 pb-4 text-secondary-foreground">
+                    <h2 className="h2 leading-loose pt-2.5 pb-4 text-primary">
                         Shop Products: All Coffee Formats
                     </h2>
                     <p className="max-w-md">

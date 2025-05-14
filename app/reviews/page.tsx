@@ -48,11 +48,11 @@ const ReviewsPage = async () => {
 
                 {reviews.length === 0 ? (
                     <div className="bg-muted rounded-lg overflow-hidden p-5 flex flex-col items-center justify-center gap-y-5">
-                        <h2 className="h2 leading-loose text-amber-500">
+                        <h2 className="h2 font-poppins font-bold text-center leading-loose text-secondary">
                             You have no reviews yet.
                         </h2>
-                        <LiaCommentSolid className="w-10 h-10 text-amber-500" />
-                        <Button asChild className="h-11">
+                        <LiaCommentSolid className="w-10 h-10 text-secondary" />
+                        <Button asChild className="mt-4 btn-cart">
                             <Link href="/products" className="flex items-center gap-x-2">
                                 <MdOutlineKeyboardReturn className="w-4 h-4" />Continue shopping
                             </Link>

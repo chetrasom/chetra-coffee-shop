@@ -51,6 +51,7 @@ const ProductsPagination = ({ currentPage, totalPages }: PaginationProps) => {
                     variant="outline"
                     onClick={() => goToPage(currentPage - 1)}
                     disabled={currentPage <= 1}
+                    className="text-base"
                 >
                     <IoIosArrowBack />
                 </Button>
@@ -65,7 +66,7 @@ const ProductsPagination = ({ currentPage, totalPages }: PaginationProps) => {
                         <Button
                             key={page}
                             size="icon"
-                            variant={page === currentPage ? "default" : "secondary"}
+                            variant={page === currentPage ? "default" : "outline"}
                             onClick={() => goToPage(page)}
                         >
                             {page}
@@ -79,6 +80,7 @@ const ProductsPagination = ({ currentPage, totalPages }: PaginationProps) => {
                     variant="outline"
                     onClick={() => goToPage(currentPage + 1)}
                     disabled={currentPage >= totalPages}
+                    className="text-base"
                 >
                     <IoIosArrowForward />
                 </Button>

@@ -33,8 +33,13 @@ const ShareButton = ({ name, productId }: ShareButtonProp) => {
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <Button variant='outline' size='icon' className='p-2'>
-                    <LuShare2 />
+                <Button
+                    type='button'
+                    size={"icon"}
+                    variant={"outline"}
+                    className='border border-[#bd7a38] rounded-full bg-background dark:bg-muted'
+                >
+                    <LuShare2 className='text-secondary w-4 h-4' />
                 </Button>
             </PopoverTrigger>
             <PopoverContent

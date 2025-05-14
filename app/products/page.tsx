@@ -77,7 +77,7 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
                                             <Button variant="ghost" size="icon">
                                                 <ImEqualizer className="w-4 h-4" />
                                             </Button>
-                                            <h3 className="h3">Filters</h3>
+                                            <h3 className="text-[22px] font-bold">Filters</h3>
                                         </div>
                                     </SheetTitle>
                                     <BorderGradient />
@@ -89,15 +89,16 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
 
                                 <div className="flex-1 overflow-y-auto">
                                     {totalProducts === 0 ? (
-                                        <h4 className="font-body pb-2.5 text-orange-500">
+                                        <h4 className="text-xl font-bold font-poppins pb-3">
                                             Sorry, no products matched your search...
                                         </h4>
                                     ) : (
-                                        <h4 className="font-body pb-2.5">
+                                        <h4 className="text-xl font-bold font-poppins pb-3">
                                             Current: <span className="text-primary">{totalProducts}</span> product{totalProducts > 1 && 's'}
                                         </h4>
                                     )}
-                                    <div className="space-y-4">
+                                    <BorderGradient />
+                                    <div className="space-y-4 mt-3">
                                         <FilterMobile title="Category" filters={categories} queryKey="category" />
                                         <FilterMobile title="Brand" filters={brands} queryKey="brand" />
                                         <FilterMobile title="Coffee Type" filters={coffeeTypes} queryKey="coffeeType" />
@@ -110,11 +111,12 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
                         </Sheet>
                     </div>
 
+                    {/* LG */}
                     <div className="hidden md:flex items-center gap-x-2">
                         <Button variant="ghost" size="icon">
                             <ImEqualizer className="w-4 h-4" />
                         </Button>
-                        <h3 className="h3">Filters</h3>
+                        <h3 className="h3 font-bold">Filters</h3>
                     </div>
 
                 </div>
@@ -122,9 +124,9 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
                 {/* Desktop */}
                 <div className="flex items-center justify-between gap-x-3 px-2 md:gap-x-4 md:basis-2/3 lg:basis-3/4">
                     <div className="hidden md:block">
-                        <h4 className="h4 font-body font-bold text-custom-green dark:text-secondary-foreground">
+                        <h3 className="h3 font-body font-bold text-primary">
                             {totalProducts} product{totalProducts > 1 && 's'}
-                        </h4>
+                        </h3>
                     </div>
                     <div className="flex items-center gap-x-4">
                         <Sorting />
@@ -137,7 +139,7 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
             {/* --------------- Desktop Products Views --------------- */}
             <div className="container py-8 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-2.5 lg:grid-cols-4 lg:gap-5">
                 <div className="relative hidden md:block">
-                    <div className="sticky top-24 h-fit max-h-[calc(100vh)] overflow-y-auto rounded-xl p-4 space-y-5">
+                    <div className="sticky top-24 h-fit max-h-[calc(100vh)] overflow-y-auto rounded-xl space-y-5">
                         <FilterGroup title="Category" filters={categories} queryKey="category" />
                         <FilterGroup title="Brand" filters={brands} queryKey="brand" />
                         <FilterGroup title="Coffee Type" filters={coffeeTypes} queryKey="coffeeType" />

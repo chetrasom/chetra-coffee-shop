@@ -23,12 +23,12 @@ const SubmitReview = ({ productId }: { productId: string }) => {
             <div className="text-center py-8 lg:py-12">
                 <Button 
                     aria-label="toggle-form"
-                    variant={isReviewFormVisible ? 'accent' : 'default'}
-                    className="btn w-full lg:max-w-max uppercase"
+                    variant={isReviewFormVisible ? 'default' : 'outline'}
+                    className={`btn-default w-full lg:max-w-max uppercase`}
                     onClick={() => setIsReviewFormVisible((prev) => !prev)}
                 >
                     {isReviewFormVisible ? (
-                        <h3 className="tracking-wider">Writing...</h3>
+                        <h3 className="tracking-wider text-white">Writing...</h3>
                     ) : (
                         <h3 className="flex items-center gap-x-1 tracking-wider">
                             Write a review <BiSolidChevronsDown className="w-4 h-4" />

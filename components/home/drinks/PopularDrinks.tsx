@@ -24,13 +24,13 @@ const PopularDrinks = async () => {
     return (
         <section>
             <div className="container">
-                <div className={`${popularDrinks.length === 1 ? 'grid-cols-1' : 'grid-cols-2'} grid gap-x-2.5 gap-y-5 md:grid-cols-3 md:gap-5 lg:grid-cols-3 lg:gap-8`}>
+                <div className={`grid grid-cols-1 gap-x-2.5 gap-y-5 md:grid-cols-3 md:gap-5 lg:grid-cols-3 lg:gap-8`}>
                     {popularDrinks.map((drink) => {
                         return <DrinkCard key={drink.id} drink={drink} />
                     })}
                 </div>
                 <div className="pt-16 text-center">
-                    <Button asChild>
+                    <Button asChild className="btn">
                         <Link href="/products">View All Drinks</Link>
                     </Button>
                 </div>

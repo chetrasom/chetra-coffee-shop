@@ -8,7 +8,10 @@ const ProductRating = async ({ productId }: { productId: string }) => {
 
     return (
         <div>
-            <Button variant="secondary" className="flex items-center gap-x-1">
+            <Button 
+                variant="ghost" 
+                className="btn-default flex items-center gap-x-1"
+            >
                 {rating} <RiStarFill className="text-amber-400 -mt-0.5" /> {countValue}
             </Button>
         </div>
