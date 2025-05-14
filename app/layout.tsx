@@ -36,11 +36,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { 
-        url: '/cafe.ico',
+        url: '/favicon.ico',
         type: 'image/x-icon',
       },
       { 
-        url: '/cafe.png',
+        url: '/favicon.png',
         type: 'image/png',
       },
     ],
