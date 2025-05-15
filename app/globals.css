@@ -129,6 +129,6 @@
     @apply rounded-lg bg-secondary hover:opacity-90 capitalize font-poppins font-bold text-[#fcf3e8] text-base gap-x-2 md:px-2.5 lg:px-4
   }
   .btn-default {
-    @apply rounded-lg capitalize font-poppins font-bold text-base transition
+    @apply rounded-lg capitalize font-poppins font-bold text-[15px] transition
   }
 }
