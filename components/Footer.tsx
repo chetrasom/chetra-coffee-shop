@@ -21,7 +21,7 @@ const Footer = () => {
                                 />
 
                                 <Link href={"/"} className="font-bold font-poppins text-xl tracking-wide text-primary md:text-[22px] lg:text-[24px]">
-                                    ChetraCoffee
+                                    Chetra Coffee
                                 </Link>
                             </div>
                             <p className="mt-4 leading-relaxed max-w-md">

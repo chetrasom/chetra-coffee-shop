@@ -61,7 +61,7 @@ const VideoSlide = ({ item, index }: VideoSlideProps) => {
 
             {/* Bottom Info Section */}
             <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-                <div className="bg-primary text-white drop-shadow-sm w-full flex items-center justify-between p-2 pointer-events-auto">
+                <div className="h-16 bg-primary text-white drop-shadow-sm w-full flex items-start justify-between p-2 pointer-events-auto">
                     <figure className="relative -mt-10 w-20 h-20">
                         <Image
                             src={item.thumbnail}
@@ -72,7 +72,7 @@ const VideoSlide = ({ item, index }: VideoSlideProps) => {
                         />
                     </figure>
                     <div className="flex-1">
-                        <h4 className="text-white font-semibold">{item.name}</h4>
+                        <h4 className="text-white font-semibold text-[15px] line-clamp-2">{item.name}</h4>
                     </div>
                 </div>
             </div>

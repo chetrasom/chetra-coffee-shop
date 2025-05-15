@@ -105,6 +105,9 @@
   .h4 {
     @apply text-base md:text-lg lg:text-xl
   }
+  .product-title {
+    @apply font-poppins font-bold text-primary dark:text-coffee-bright line-clamp-2 px-2 lg:px-3.5 lg:text-lg
+  }
   .section {
     @apply pt-28 pb-16 lg:pt-32 xl:pt-36
   }

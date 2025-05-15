@@ -17,10 +17,10 @@ type ReviewCardProps = {
 const ReviewCard = ({ reviewInfo, children }: ReviewCardProps) => {
     const id = reviewInfo.productId;
     return (
-        <div className="relative bg-background border border-[#f5d8b7]/50 shadow-lg rounded-xl p-4 bg-muted">
+        <div className="relative border border-[#f5d8b7]/50 shadow-lg rounded-xl p-4 bg-muted">
             <Link href={`/products/${id}`} className="space-y-4 md:space-y-5">
                 <div className="flex items-center gap-x-2.5">
-                    <figure className="relative bg-muted w-16 h-16 rounded-full ring-1 ring-primary/50 overflow-hidden">
+                    <figure className="relative bg-muted w-20 h-20 rounded-full ring-1 ring-secondary overflow-hidden">
                         <Image 
                             src={reviewInfo.image}
                             alt={reviewInfo.name}

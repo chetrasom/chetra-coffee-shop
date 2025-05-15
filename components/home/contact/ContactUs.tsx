@@ -3,10 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { BsMessenger, BsTelegram } from "react-icons/bs";
 import { PiMapPinFill } from "react-icons/pi";
-import { IoIosPhonePortrait } from "react-icons/io";
 import { FaPhoneAlt } from 'react-icons/fa';
 import { LuClock } from "react-icons/lu";
-import { Button } from "@/components/ui/button";
+import { HiMiniDevicePhoneMobile } from "react-icons/hi2";
 
 const ContactUs = () => {
     return (
@@ -22,15 +21,24 @@ const ContactUs = () => {
                                 Write Us
                             </h3>
                             <div className="flex gap-x-3">
-                                <Button asChild size={"icon"} className="bg-secondary">
-                                    <Link href="/"><FaPhoneAlt className="w-5 h-5" /></Link>
-                                </Button>
-                                <Button asChild size={"icon"} className="bg-secondary">
-                                    <Link href="/"><BsMessenger className="w-5 h-5" /></Link>
-                                </Button>
-                                <Button asChild size={"icon"} className="bg-secondary">
-                                    <Link href="/"><BsTelegram className="w-5 h-5" /></Link>
-                                </Button>
+                                <Link 
+                                    href="/" 
+                                    className="block bg-secondary text-custom-white p-2 rounded-lg hover:opacity-90 transition-colors"
+                                >
+                                    <FaPhoneAlt className="w-6 h-6" />
+                                </Link>
+                                <Link 
+                                    href="/" 
+                                    className="block bg-secondary text-custom-white p-2 rounded-lg hover:opacity-90 transition-colors"
+                                >
+                                    <BsMessenger className="w-6 h-6" />
+                                </Link>
+                                <Link 
+                                    href="/" 
+                                    className="block bg-secondary text-custom-white p-2 rounded-lg hover:opacity-90 transition-colors"
+                                >
+                                    <BsTelegram className="w-6 h-6" />
+                                </Link>
                             </div>
                         </div>
 
@@ -41,7 +49,7 @@ const ContactUs = () => {
                             <p className="text-center pb-4">
                                 #168, Street 271 - Sangkat Beoung Salang, Khan Toul Kork, Phnom Penh, Cambodia
                             </p>
-                            <Link href="/" className="flex gap-x-1 text-primary hover:underline underline-offset-2">
+                            <Link href="/" className="flex gap-x-1 font-bold text-primary underline hover:underline underline-offset-2">
                                 <PiMapPinFill className="w-5 h-5 text-red-500" />
                                 View On Map
                             </Link>
@@ -58,7 +66,7 @@ const ContactUs = () => {
                                     <LuClock className="w-5 h-5 text-secondary mt-0.5" />
                                     <div className="text-secondary-foreground/75">
                                         <ul className="space-y-1">
-                                            <li>Monday - Friday</li>
+                                            <li className="font-bold">Monday - Friday</li>
                                             <li className="text-sm text-secondary-foreground/75">8:00 AM - 10:00 PM</li>
                                         </ul>
                                     </div>
@@ -67,7 +75,7 @@ const ContactUs = () => {
                                     <LuClock className="w-5 h-5 text-secondary mt-0.5" />
                                     <div className="text-secondary-foreground/75">
                                         <ul className="space-y-1">
-                                            <li>Saturday - Sunday</li>
+                                            <li className="font-bold">Saturday - Sunday</li>
                                             <li className="text-sm text-secondary-foreground/75">8:00 AM - 5:00 PM</li>
                                         </ul>
                                     </div>
@@ -78,12 +86,12 @@ const ContactUs = () => {
                             <h3 className="text-2xl font-bold text-primary dark:text-secondary-foreground drop-shadow-sm pb-2">
                                 Delivery
                             </h3>
-                            <div className="flex gap-x-1">
-                                <IoIosPhonePortrait className="w-5 h-5 text-secondary" />
-                                <p>(+855)-93-903-894</p>
+                            <div className="flex items-center gap-x-1">
+                                <HiMiniDevicePhoneMobile className="w-5 h-5 text-secondary" />
+                                <span>(+855)-93-903-894</span>
                             </div>
                             <div className="flex gap-x-1">
-                                <IoIosPhonePortrait className="w-5 h-5 text-secondary" />
+                                <HiMiniDevicePhoneMobile className="w-5 h-5 text-secondary" />
                                 <p>(+855)-93-399-697</p>
                             </div>
 
