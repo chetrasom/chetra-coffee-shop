@@ -3,7 +3,7 @@
 import db from "@/utils/db";
 import { serialize } from "@/lib/serialize";
 import { ProductWithRelations } from "@/types";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from 'next/cache';
 import { reviewSchema, validateWithZodSchema } from "./schemas";
@@ -68,78 +68,217 @@ export const fetchAllProducts = async ({
     brand,
     coffeeType,
     sort = 'newest',
-    page = 1,  // Default page is 1
-    limit = 10, // Default limit is 10 products per page
+    page = 1,
+    limit = 10,
 }: {
-    search?: string,
-    category?: string,
-    brand?: string,
-    coffeeType?: string,
+    search?: string;
+    category?: string;
+    brand?: string;
+    coffeeType?: string;
     sort?: string;
     page?: number;
     limit?: number;
 }) => {
-    const perPage = limit;  // Items per page (e.g., 10)
-    const skip = (page - 1) * perPage;  // Calculate how many products to skip for pagination
+    const perPage = limit;
+    const skip = (page - 1) * perPage;
 
-    const products = await db.product.findMany({
-        where: {
+    // Optimize by using select instead of include
+    // const [products, totalProducts] = await Promise.all([
+    //     db.product.findMany({
+    //         where: {
+    //             ...(search && { name: { contains: search, mode: 'insensitive' } }),
+    //             ...(category && { category: { slug: category } }),
+    //             ...(brand && { brand: { slug: brand } }),
+    //             ...(coffeeType && { coffeeType: { slug: coffeeType } }),
+    //         },
+    //         skip,
+    //         take: perPage,
+    //         orderBy: 
+    //             sort === 'price-asc'
+    //                 ? { price: 'asc' }
+    //                 : sort === 'price-desc'
+    //                 ? { price: 'desc' }
+    //                 : sort === 'name-asc'
+    //                 ? { name: 'asc' }
+    //                 : sort === 'name-desc'
+    //                 ? { name: 'desc' }
+    //                 : { createdAt: 'desc' },
+    //         select: {
+    //             id: true,
+    //             name: true,
+    //             price: true,
+    //             imageUrl: true,
+    //             category: { select: { name: true, slug: true } },
+    //             brand: { select: { name: true, slug: true } },
+    //             coffeeType: { select: { name: true, slug: true } },
+    //         },
+    //     }),
+    //     db.product.count({
+    //         where: {
+    //             ...(search && { name: { contains: search, mode: 'insensitive' } }),
+    //             ...(category && { category: { slug: category } }),
+    //             ...(brand && { brand: { slug: brand } }),
+    //             ...(coffeeType && { coffeeType: { slug: coffeeType } }),
+    //         },
+    //     }),
+    // ]);
+    const [products, totalProducts] = await Promise.all([
+        db.product.findMany({
+            where: {
+                ...(search && { name: { contains: search, mode: 'insensitive' } }),
+                ...(category && { category: { slug: category } }),
+                ...(brand && { brand: { slug: brand } }),
+                ...(coffeeType && { coffeeType: { slug: coffeeType } }),
+            },
+            skip,
+            take: perPage,
+            orderBy: 
+                sort === 'price-asc' ? { price: 'asc' } :
+                sort === 'price-desc' ? { price: 'desc' } :
+                sort === 'name-asc' ? { name: 'asc' } :
+                sort === 'name-desc' ? { name: 'desc' } :
+                { createdAt: 'desc' },
+            include: {
+                category: true,
+                brand: true,
+                coffeeType: true,
+            },
+        }),
+        db.product.count({
+            where: {
             ...(search && { name: { contains: search, mode: 'insensitive' } }),
             ...(category && { category: { slug: category } }),
             ...(brand && { brand: { slug: brand } }),
             ...(coffeeType && { coffeeType: { slug: coffeeType } }),
-        },
-        skip: skip,  // Skip results based on page
-        take: perPage,  // Fetch the limit number of results
-        orderBy:
-            sort === 'price-asc'
-                ? { price: 'asc' }
-                : sort === 'price-desc'
-                ? { price: 'desc' }
-                : sort === 'name-asc'
-                ? { name: 'asc' }
-                : sort === 'name-desc'
-                ? { name: 'desc' }
-                : { createdAt: 'desc' },  // Default sorting by newest
-        include: {
-            category: true,
-            brand: true,
-            coffeeType: true,
-        }
-    });
+            },
+        }),
+        ]);
 
-    // Fetch the total count of products for pagination purposes
-    const totalProducts = await db.product.count({
-        where: {
-            ...(search && { name: { contains: search, mode: 'insensitive' } }),
-            ...(category && { category: { slug: category } }),
-            ...(brand && { brand: { slug: brand } }),
-            ...(coffeeType && { coffeeType: { slug: coffeeType } }),
-        },
-    });
-
-    const totalPages = Math.ceil(totalProducts / perPage);  // Calculate the total number of pages
+    const totalPages = Math.ceil(totalProducts / perPage);
 
     return {
         products: serialize(products),
         totalPages,
-        currentPage: page,  // Return the current page for frontend usage
+        currentPage: page,
     };
 };
 
+// export const fetchAllProducts = async ({
+//     search = '',
+//     category,
+//     brand,
+//     coffeeType,
+//     sort = 'newest',
+//     page = 1,  // Default page is 1
+//     limit = 10, // Default limit is 10 products per page
+// }: {
+//     search?: string,
+//     category?: string,
+//     brand?: string,
+//     coffeeType?: string,
+//     sort?: string;
+//     page?: number;
+//     limit?: number;
+// }) => {
+//     const perPage = limit;  // Items per page (e.g., 10)
+//     const skip = (page - 1) * perPage;  // Calculate how many products to skip for pagination
+
+//     const products = await db.product.findMany({
+//         where: {
+//             ...(search && { name: { contains: search, mode: 'insensitive' } }),
+//             ...(category && { category: { slug: category } }),
+//             ...(brand && { brand: { slug: brand } }),
+//             ...(coffeeType && { coffeeType: { slug: coffeeType } }),
+//         },
+//         skip: skip,  // Skip results based on page
+//         take: perPage,  // Fetch the limit number of results
+//         orderBy:
+//             sort === 'price-asc'
+//                 ? { price: 'asc' }
+//                 : sort === 'price-desc'
+//                 ? { price: 'desc' }
+//                 : sort === 'name-asc'
+//                 ? { name: 'asc' }
+//                 : sort === 'name-desc'
+//                 ? { name: 'desc' }
+//                 : { createdAt: 'desc' },  // Default sorting by newest
+//         include: {
+//             category: true,
+//             brand: true,
+//             coffeeType: true,
+//         }
+//     });
+
+//     // Fetch the total count of products for pagination purposes
+//     const totalProducts = await db.product.count({
+//         where: {
+//             ...(search && { name: { contains: search, mode: 'insensitive' } }),
+//             ...(category && { category: { slug: category } }),
+//             ...(brand && { brand: { slug: brand } }),
+//             ...(coffeeType && { coffeeType: { slug: coffeeType } }),
+//         },
+//     });
+
+//     const totalPages = Math.ceil(totalProducts / perPage);  // Calculate the total number of pages
+
+//     return {
+//         products: serialize(products),
+//         totalPages,
+//         currentPage: page,  // Return the current page for frontend usage
+//     };
+// };
+
 // ⭐⭐⭐⭐⭐⭐⭐⭐⭐ # SINGLE PAGE
+
+// export const fetchSingleProduct = async (productId: string) => {
+//     const product = await db.product.findUnique({
+//         where: {
+//             id: productId,
+//         },
+//     });
+
+//     if (!product) {
+//         redirect('/products')
+//     }
+
+//     return serialize(product);
+// };
 export const fetchSingleProduct = async (productId: string) => {
     const product = await db.product.findUnique({
-        where: {
-            id: productId,
+        where: { id: productId },
+        select: {
+            id: true,
+            name: true,
+            price: true,
+            longDesc: true,
+            imageUrl: true,
+            size: true,
+            categoryId: true,
+            brand: {
+                select: { name: true },
+            },
+            coffeeType: {
+                select: { name: true },
+            },
+            category: {
+                select: { name: true },
+            },
         },
     });
 
     if (!product) {
-        redirect('/products')
+        notFound();
     }
 
-    return serialize(product);
+    // Convert Decimal price to number here
+    const productWithNumberPrice = {
+        ...product,
+        price: product.price.toNumber(),
+    };
+
+    return serialize(productWithNumberPrice);
+
+    // return serialize(product);
 };
 
 export const fetchRelatedProducts = async (productId: string, categoryId: string) => {

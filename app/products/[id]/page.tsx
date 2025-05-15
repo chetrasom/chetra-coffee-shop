@@ -65,13 +65,24 @@ export async function generateMetadata({ params }: SingleProductProp) {
 
 const SingleProduct = async ({ params }: SingleProductProp) => {
     const { userId } = auth();
-    const product = await fetchSingleProduct(params.id);
-    const relatedProducts = await fetchRelatedProducts(params.id, product.categoryId);
-    const reviewDoesNotExist = userId && !(await findExistingReview(userId, product.id));
+    // # Old
+    // const product = await fetchSingleProduct(params.id);
+    // const relatedProducts = await fetchRelatedProducts(params.id, product.categoryId);
+    // const reviewDoesNotExist = userId && !(await findExistingReview(userId, product.id));
+
+    // # Improve Update
+    // Fetch data in parallel
+    const [product, userReview] = await Promise.all([
+        fetchSingleProduct(params.id),
+        userId ? findExistingReview(userId, params.id) : null
+    ]);
     
     if (!product) {
         notFound(); // Show the 404 page if product is not found
     }
+
+    // Fetch related products after ensuring product exists
+    const relatedProducts = await fetchRelatedProducts(params.id, product.categoryId);
 
     return (
         <section className="section">
@@ -79,7 +90,7 @@ const SingleProduct = async ({ params }: SingleProductProp) => {
                 <BreadCrumb name={product.name} />
                 <SingleProductContainer product={product} />
                 <ProductReviews productId={params.id} />
-                {reviewDoesNotExist && <SubmitReview productId={product.id} />}
+                {userReview && <SubmitReview productId={product.id} />}
                 <RelatedContainer relatedProducts={relatedProducts} />
             </div>
         </section>

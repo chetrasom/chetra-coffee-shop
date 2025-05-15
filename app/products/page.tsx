@@ -21,7 +21,9 @@ import ProductsPagination from "@/components/products/ProductsPagination";
 import FilterGroup from "@/components/products/filters/FilterGroup";
 import ResetFilters from "@/components/products/filters/ResetFilters";
 import FilterMobile from "@/components/products/filters/FilterMobile";
+import { fetchCachedFilters } from "@/utils/cachedFilters";
 
+export const revalidate = 30;
 interface ProductsPageProps {
     searchParams: {
         layout?: string,
@@ -46,12 +48,15 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
     const page = Number(searchParams.page) || 1; 
     const limit = 10;
     
-    // Parallel fetch of filters
-    const [categories, brands, coffeeTypes] = await Promise.all([
-        db.category.findMany({ select: { name: true, slug: true } }),
-        db.brand.findMany({ select: { name: true, slug: true } }),
-        db.coffeeType.findMany({ select: { name: true, slug: true } }),
-    ]);
+    // # Parallel fetch of filters
+    // const [categories, brands, coffeeTypes] = await Promise.all([
+    //     db.category.findMany({ select: { name: true, slug: true } }),
+    //     db.brand.findMany({ select: { name: true, slug: true } }),
+    //     db.coffeeType.findMany({ select: { name: true, slug: true } }),
+    // ]);
+
+    // # Update: Fetch cached filters
+    const { categories, brands, coffeeTypes } = await fetchCachedFilters();
 
     // const products = await fetchAllProducts({ search, category, brand, coffeeType, sort });
     const { products, totalPages, currentPage } = await fetchAllProducts({ search, category, brand, coffeeType, sort, page, limit });

@@ -57,7 +57,7 @@ const ProductsPagination = ({ currentPage, totalPages }: PaginationProps) => {
                 </Button>
 
                 {/* Page Numbers */}
-                {pageNumbers.map((page, index) =>
+                {/* {pageNumbers.map((page, index) =>
                     page === "..." ? (
                         <Button key={index} size="icon" variant="ghost" disabled>
                             ...
@@ -72,6 +72,17 @@ const ProductsPagination = ({ currentPage, totalPages }: PaginationProps) => {
                             {page}
                         </Button>
                     )
+                )} */}
+                {pageNumbers.map((page, index) =>
+                    <Button
+                        key={`${page}-${index}`} // combine page and index for unique keys
+                        size="icon"
+                        variant={page === currentPage ? "default" : "outline"}
+                        onClick={page === "..." ? undefined : () => goToPage(Number(page))}
+                        disabled={page === "..."}
+                    >
+                        {page}
+                    </Button>
                 )}
 
                 {/* Next */}

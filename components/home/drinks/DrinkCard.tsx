@@ -30,7 +30,7 @@ const DrinkCard = ({ drink }: DrinkCardProp) => {
                                     src={drink?.imageUrl}
                                     alt="coffee"
                                     fill
-                                    priority
+                                    loading="lazy"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     className="w-full h-full object-contain"
                                 />

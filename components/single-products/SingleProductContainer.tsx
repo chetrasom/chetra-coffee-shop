@@ -1,17 +1,45 @@
 import Image from "next/image"
 import FavoriteToggleButton from "../products/FavoriteToggleButton";
 import ShareButton from "./ShareButton"
-import { Input } from "../ui/input";
+// import { Input } from "../ui/input";
 import { formatCurrency } from "@/utils/formatCurrency";
-import { Product } from "@prisma/client";
+// import { Product } from "@prisma/client";
 import AddToCart from "./AddToCart";
 import ProductRating from "./ProductRating";
-import SelectProductAmount from "./SelectProductAmount";
-import { Button } from "../ui/button";
+// import SelectProductAmount from "./SelectProductAmount";
+// import { Button } from "../ui/button";
+
+// type SingleProductContainerProp = {
+//     product: Product
+// }
+
+type Brand = {
+    name: string;
+};
+
+type CoffeeType = {
+    name: string;
+};
+
+type Category = {
+    name: string;
+};
+
+type ProductWithRelations = {
+    id: string;
+    name: string;
+    price: number;  // price is now a number, not Decimal
+    longDesc: string | null;
+    imageUrl: string | null;
+    size: number[];
+    brand: Brand | null;
+    coffeeType: CoffeeType | null;
+    category: Category | null;
+};
 
 type SingleProductContainerProp = {
-    product: Product,
-}
+    product: ProductWithRelations;
+};
 
 const SingleProductContainer = ({ product }: SingleProductContainerProp) => {
     const { imageUrl, name, price, longDesc, size } = product;
