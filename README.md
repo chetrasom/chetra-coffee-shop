@@ -21,13 +21,12 @@ it provides a seamless shopping experience.
 - Database: Supabase (PostgreSQL)
 - Authentication: Clerk
 - Deployment: Vercel
-- 
 ### ⚡ SEO Features
-✅ Dynamic Metadata with Next.js generateMetadata for SEO.
-✅ Optimized URL structure for better search visibility.
-✅ Descriptive titles and meta descriptions.
-✅ Open Graph (OG) tags for improved social sharing.
-✅ Lazy loading for images to boost performance.
+- Dynamic Metadata with Next.js generateMetadata for SEO.
+- Optimized URL structure for better search visibility.
+- Descriptive titles and meta descriptions.
+- Open Graph (OG) tags for improved social sharing.
+- Lazy loading for images to boost performance.
 
 ### 🌐 Live Demo
 [Visit Chetra Coffee Shop](https://chetracoffee-shop.vercel.app/)
