@@ -8,12 +8,13 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 
-const test1 = "/img/hero/hero1.jpg";
-const test2 = "/img/hero/hero2.jpg";
-const test3 = "/img/hero/hero3.jpg";
-const test4 = "/img/hero/hero4.jpg";
+const hero1 = "https://ik.imagekit.io/phkgtl3vm/Kh-coffee/hero.png?updatedAt=1755926550030";
+const hero2 = "https://ik.imagekit.io/phkgtl3vm/Sachet%20Coffee/ezgif-8ebc9623ed827f.jpg?updatedAt=1755941727211";
+const hero3 = "/img/hero/hero2.jpg";
+const hero4 = "/img/hero/hero3.jpg";
+const hero5 = "/img/hero/hero4.jpg";
 
-const carouselImages = [test1, test2, test3, test4];
+const carouselImages = [hero1];
 
 const HeroCarousel = () => {
     return (

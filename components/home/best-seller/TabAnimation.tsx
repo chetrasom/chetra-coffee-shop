@@ -4,7 +4,8 @@ import { formatCategory } from "@/lib/formatCategory";
 import { ProductWithRelations } from "@/types";
 import BestSellerProduct from "./BestSellerProduct";
 
-const categories = ["all", "instant-coffee", "sachet-coffee", "ready-to-drink-coffee"];
+// const categories = ["all", "mondulkiri" ,"instant-coffee", "sachet-coffee", "ready-to-drink-coffee"];
+const categories = ["all", "mondulkiri" ,"instant-coffee", "sachet-coffee"];
 
 type TabAnimationProp = {
     products: ProductWithRelations[]

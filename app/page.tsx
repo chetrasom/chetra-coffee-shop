@@ -40,7 +40,7 @@ const HomePage = () => {
                 </Suspense>
             </>
 
-            <ReviewsSocial />
+            {/* <ReviewsSocial /> */}
             <ContactUs />
         </>
     )

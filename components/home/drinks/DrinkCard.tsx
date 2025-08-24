@@ -4,7 +4,7 @@ import { formatCurrency } from "@/utils/formatCurrency";
 import { ProductWithRelations } from "@/types";
 import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
 import { Button } from "@/components/ui/button";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaFlagUsa } from "react-icons/fa";
 
 type DrinkCardProp = {
     drink: ProductWithRelations

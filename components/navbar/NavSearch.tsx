@@ -47,7 +47,7 @@ const NavSearch = () => {
             <Input 
                 type="search"
                 placeholder="Explore coffee flavors and more..."
-                className="h-12 bg-background pl-11"
+                className="h-12 bg-background pl-11 border-primary"
                 value={search}
                 onChange={(e) => {
                     setSearch(e.target.value);

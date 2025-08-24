@@ -6,5 +6,6 @@
     { "name": "Mocha", "slug": "mocha" },
     { "name": "Cappuccino", "slug": "cappuccino" },
     { "name": "Iced coffee", "slug": "iced-coffee" },
-    { "name": "Flavoured", "slug": "flavoured" }
+    { "name": "Flavoured", "slug": "flavoured" },
+    { "name": "Mondulkiri", "slug": "mondulkiri" }
 ]  
